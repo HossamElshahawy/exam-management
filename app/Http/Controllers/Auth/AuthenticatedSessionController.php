@@ -29,7 +29,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if(Auth::user() && Auth::user()->role == 0)
+        {
+            return redirect()->route('admin.dashboard');
+        }
+        if(Auth::user() && Auth::user()->role == 1)
+        {
+            return redirect()->route('professor.dashboard');
+        }
+        if(Auth::user() && Auth::user()->role == 2)
+        {
+            return redirect()->route('student.dashboard');
+        }
     }
 
     /**
@@ -43,6 +54,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }
