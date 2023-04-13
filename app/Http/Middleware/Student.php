@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class Student
@@ -15,10 +16,10 @@ class Student
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user() && auth()->user()->role == 2)
+        if(auth()->user() && in_array(auth()->user()->role, [1, 3]) && Auth::user()->is_approved)
         {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('login');
     }
 }

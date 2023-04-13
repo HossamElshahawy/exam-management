@@ -70,6 +70,22 @@
                   </a>
                 </li>
               </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('unapproved.index')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Professors Requests</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('approved.index')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Professors</p>
+                  </a>
+                </li>
+              </ul>
               @endcan
 
               <ul class="nav nav-treeview">

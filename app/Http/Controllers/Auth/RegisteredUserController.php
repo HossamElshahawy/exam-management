@@ -18,7 +18,7 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create()
     {
         return view('auth.register');
     }
@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -46,16 +46,18 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        if(Auth::user() && Auth::user()->role == 0)
+        if(Auth::user() && Auth::user()->role == 1)
         {
             return redirect()->route('admin.dashboard');
         }
-        if(Auth::user() && Auth::user()->role == 1)
+        if(Auth::user() && Auth::user()->role == 2)
         {
             return redirect()->route('professor.dashboard');
         }
-        if(Auth::user() && Auth::user()->role == 2)
+        if(Auth::user() && Auth::user()->role == 3)
         {
             return redirect()->route('student.dashboard');
-        }    }
+        }
+        return redirect()->route('login');
+    }
 }

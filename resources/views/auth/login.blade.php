@@ -1,4 +1,23 @@
+<style>
+    .alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    }
+    .alert-danger {
+    background-color: #edd4d4;
+    border-color: #6d7a70;
+    color: #020d05;
+    }
+
+    </style>
+
 <x-guest-layout>
+    @if(session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 

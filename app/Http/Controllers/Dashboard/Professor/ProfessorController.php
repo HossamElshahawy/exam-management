@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Professor;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
 
 class ProfessorController extends Controller
 {

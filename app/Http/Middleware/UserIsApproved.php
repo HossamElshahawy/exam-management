@@ -7,19 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Professor
+class UserIsApproved
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        if (auth()->user() && in_array(auth()->user()->role, [1,2]) && Auth::user()->is_approved)
-        {
-            return $next($request);
+        if (Auth::check() && !Auth::user()->is_approved) {
+            Auth::logout();
+            return redirect()->route('login')->with('success', 'Your account is still awaiting approval from the admin.');
         }
-        return redirect('login');
+        return $next($request);
+
     }
 }
