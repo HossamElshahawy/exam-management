@@ -5,7 +5,7 @@
 
 ( function( factory ) {
 	"use strict";
-	
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -1349,7 +1349,7 @@ var jQuery = $;
 	class2type = {},
 	toString = class2type.toString,
 
-	// plusequals test for += 100 -= 100
+	// plusequals exam for += 100 -= 100
 	rplusequals = /^([\-+])=\s*(\d+\.?\d*)/,
 
 	// a set of RE's that can match strings and generate color tuples.

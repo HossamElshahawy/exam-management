@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $departments = Department::all();
+        return view('auth.register',compact('departments'));
     }
 
     /**
@@ -30,18 +32,33 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'role' => 'required|in:2,3',
+            'department_id' => 'nullable|required_if:role,3',
+            'level' => 'nullable|required_if:role,3'
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = new User;
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = Hash::make($validatedData['password']);
 
+        if ($validatedData['role'] == 2) {
+            $user->is_approved = false;
+            $user->department_id = null;
+            $user->level = null;
+            $user->role = 2;
+        } elseif ($validatedData['role'] == 3) {
+            $user->is_approved = true;
+            $user->department_id = $validatedData['department_id'];
+            $user->level = $validatedData['level'];
+            $user->role = 3;
+        }
+
+        $user->save();
         event(new Registered($user));
 
         Auth::login($user);

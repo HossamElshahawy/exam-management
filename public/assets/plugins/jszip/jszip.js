@@ -1315,7 +1315,7 @@ module.exports = {
     },
     /**
      * Find out if an object is a Buffer.
-     * @param {Object} b the object to test.
+     * @param {Object} b the object to exam.
      * @return {Boolean} true if the object is a Buffer, false otherwise.
      */
     isBuffer : function(b){
@@ -3460,8 +3460,8 @@ exports.prepareContent = function(name, inputData, isBinary, isOptimizedBinarySt
 
     // if inputData is already a promise, this flatten it.
     var promise = external.Promise.resolve(inputData).then(function(data) {
-        
-        
+
+
         var isBlob = support.blob && (data instanceof Blob || ['[object File]', '[object Blob]'].indexOf(Object.prototype.toString.call(data)) !== -1);
 
         if (isBlob && typeof FileReader !== "undefined") {
@@ -8335,7 +8335,7 @@ function inflateResetKeep(strm) {
   state = strm.state;
   strm.total_in = strm.total_out = state.total = 0;
   strm.msg = ''; /*Z_NULL*/
-  if (state.wrap) {       /* to support ill-conceived Java test suite */
+  if (state.wrap) {       /* to support ill-conceived Java exam suite */
     strm.adler = state.wrap & 1;
   }
   state.mode = HEAD;
@@ -11209,7 +11209,7 @@ function _tr_flush_block(s, buf, stored_len, last)
   if ((stored_len + 4 <= opt_lenb) && (buf !== -1)) {
     /* 4: two words for the lengths */
 
-    /* The test buf != NULL is only necessary if LIT_BUFSIZE > WSIZE.
+    /* The exam buf != NULL is only necessary if LIT_BUFSIZE > WSIZE.
      * Otherwise we can't have processed more than WSIZE input bytes since
      * the last block flush, because compression would have been
      * successful. If LIT_BUFSIZE <= WSIZE, it is never too late to

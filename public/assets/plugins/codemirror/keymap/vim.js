@@ -4173,7 +4173,7 @@
             if (n && unescape.indexOf(n) != -1) {
               specialComesNext = true;
             }
-            // Not passing this test means removing a '\'.
+            // Not passing this exam means removing a '\'.
             if (!specialComesNext || n === '\\') {
               out.push(c);
             }

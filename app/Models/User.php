@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'level',
+        'department_id',
+        'role'
     ];
 
     /**
@@ -44,5 +47,9 @@ class User extends Authenticatable
     public function subject()
     {
         return $this->hasMany(Subject::class);
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 }

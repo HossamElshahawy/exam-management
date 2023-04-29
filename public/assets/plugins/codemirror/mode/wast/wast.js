@@ -98,7 +98,7 @@ var kKeywords = [
     "field",
     "i31\\.(new|get_[su])",
     "\\bnull\\b",
-    "ref(\\.(([ai]s_(data|func|i31))|cast|eq|func|(is_|as_non_)?null|test))?",
+    "ref(\\.(([ai]s_(data|func|i31))|cast|eq|func|(is_|as_non_)?null|exam))?",
     "rtt(\\.(canon|sub))?",
 ];
 

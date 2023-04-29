@@ -1060,7 +1060,7 @@
                     '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
                 this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
             }
-            // test the regex
+            // exam the regex
             if (
                 strict &&
                 format === 'MMMM' &&
@@ -1675,7 +1675,7 @@
                     this.weekdaysMin(mom, '');
                 this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
             }
-            // test the regex
+            // exam the regex
             if (
                 strict &&
                 format === 'dddd' &&

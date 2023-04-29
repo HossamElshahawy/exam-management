@@ -19,7 +19,7 @@ class SubjectController extends Controller
     {
         $subjects = Subject::paginate(10);
         $departments = Department::all();
-        $users = User::where('role',1)->get();
+        $users = User::where('role',2)->get();
 
         return view('dashboard.admin.subject.index',compact('subjects','departments','users'));
     }

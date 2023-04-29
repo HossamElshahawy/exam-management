@@ -21,5 +21,9 @@ class Department extends Model
         {
             return $this->hasMany(Subject::class);
         }
+        public function user()
+        {
+            return $this->hasMany(User::class);
+        }
 
 }

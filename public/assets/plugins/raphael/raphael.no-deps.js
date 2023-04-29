@@ -252,7 +252,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         appendChild = "appendChild",
         apply = "apply",
         concat = "concat",
-        //taken from Modernizr touch test: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js#L40
+        //taken from Modernizr touch exam: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js#L40
         supportsTouch = ('ontouchstart' in window) || window.TouchEvent || window.DocumentTouch && document instanceof DocumentTouch,
         E = "",
         S = " ",

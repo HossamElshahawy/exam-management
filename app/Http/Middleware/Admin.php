@@ -16,7 +16,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user() && auth()->user()->role == 1 && Auth::user()->is_approved)
+        if(auth()->user() && auth()->user()->role == 1 && Auth::user()->is_approved == true)
         {
             return $next($request);
         }

@@ -498,7 +498,7 @@ can set the default in the options.
                     max = tmp;
                 }
 
-                // test for zoom limits zoomRange: [min,max]
+                // exam for zoom limits zoomRange: [min,max]
                 if (opts.zoomRange) {
                     // zoomed in too far
                     if (max - min < opts.zoomRange[0]) {

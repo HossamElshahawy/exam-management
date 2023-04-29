@@ -10,7 +10,9 @@ use App\Http\Controllers\Dashboard\Admin\DepartmentController;
 use App\Http\Controllers\Dashboard\Admin\SubjectController;
 use App\Http\Controllers\Dashboard\Professor\ChapterController;
 use App\Http\Controllers\Dashboard\Admin\ApprovalController;
-
+use App\Http\Controllers\Dashboard\professor\ExamController;
+use App\Http\Controllers\Dashboard\professor\QnAController;
+use App\Http\Controllers\Dashboard\Student\TestController;
 
 Route::middleware(['auth','web','user_approved'])->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -21,17 +23,16 @@ Route::middleware(['auth','web','user_approved'])->group(function () {
     Route::group(['middleware'=>['admin']],function(){
 
         Route::get('/admin/dashboard', [AdminController::class,'index'])->name('admin.dashboard');
-
+        //branches
         Route::resource('/admin/faculity', FaculityController::class);
         Route::resource('/admin/department', DepartmentController::class);
         Route::resource('/admin/subject', SubjectController::class);
-
+        // approved prof
         Route::get('/admin/users/approved', [ApprovalController::class,'approvedUsers'])->name('approved.index');
         Route::get('/admin/users/unapproved', [ApprovalController::class,'unapprovedUsers'])->name('unapproved.index');
         Route::post('/admin/users/{user}/approve', [ApprovalController::class,'approvedUser'])->name('approved');
         Route::delete('/admin/users/{prof}',[ApprovalController::class,'deleteProf'])->name('prof.destroy');
 
-    
 
 
     });
@@ -41,12 +42,27 @@ Route::middleware(['auth','web','user_approved'])->group(function () {
         Route::get('/prof/dashboard', [ProfessorController::class,'index'])->name('professor.dashboard');
 
         Route::resource('/prof/chapter', ChapterController::class);
+        Route::resource('/prof/exam', ExamController::class);
+
+        Route::get('/prof/exams/get-questions', [ExamController::class,'getQuestions'])->name('getQuestions');
+        Route::POST('/prof/exams/add-questions', [ExamController::class,'addQuestions'])->name('addQuestions');
+        Route::get('/prof/exams/show-questions', [ExamController::class,'showExamQuestions'])->name('showExamQuestions');
+        Route::get('/prof/exams/delete-questions', [ExamController::class,'deleteExamQuestions'])->name('deleteExamQuestions');
+
+        //Q&A
+        Route::resource('/prof/QnA', QnAController::class);
+        Route::POST('/prof/QnA/delete', [QnAController::class,'deleteQnA'])->name('Qna.delete');
+
+
 
     });
 
     Route::group(['middleware'=>['student']],function(){
 
         Route::get('/student/dashboard', [StudentController::class,'index'])->name('student.dashboard');
+
+        Route::get('/student/tests', [TestController::class,'index'])->name('test.index');
+        Route::get('/exam/{id}', [TestController::class,'loadExamDashobard'])->name('student.test');
 
     });
 });

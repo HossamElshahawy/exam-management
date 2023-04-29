@@ -166,7 +166,7 @@ $.validator.addMethod( "bankorgiroaccountNL", function( value, element ) {
  * - Next 2 characters - ISO 3166-1 alpha-2 country code (only letters)
  * - Next 2 characters - location code (letters and digits)
  *   a. shall not start with '0' or '1'
- *   b. second character must be a letter ('O' is not allowed) or digit ('0' for test (therefore not allowed), '1' denoting passive participant, '2' typically reverse-billing)
+ *   b. second character must be a letter ('O' is not allowed) or digit ('0' for exam (therefore not allowed), '1' denoting passive participant, '2' typically reverse-billing)
  * - Last 3 characters - branch code, optional (shall not start with 'X' except in case of 'XXX' for primary office) (letters and digits)
  */
 $.validator.addMethod( "bic", function( value, element ) {
@@ -245,7 +245,7 @@ $.validator.addMethod( "cifES", function( value, element ) {
 		return n % 2 === 0;
 	}
 
-	// Quick format test
+	// Quick format exam
 	if ( value.length !== 9 || !cifRegEx.test( value ) ) {
 		return false;
 	}
@@ -1004,7 +1004,7 @@ $.validator.addMethod( "nieES", function( value, element ) {
 
 	value = value.toString().toUpperCase();
 
-	// Quick format test
+	// Quick format exam
 	if ( value.length > 10 || value.length < 9 || !nieRegEx.test( value ) ) {
 		return false;
 	}
@@ -1034,7 +1034,7 @@ $.validator.addMethod( "nifES", function( value, element ) {
 
 	value = value.toUpperCase();
 
-	// Basic format test
+	// Basic format exam
 	if ( !value.match( "((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)" ) ) {
 		return false;
 	}

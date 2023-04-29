@@ -17,11 +17,15 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->default(0); //1 Admin & 2 PROF & 3 student
+            $table->integer('role')->default(2); //1 Admin & 2 PROF & 3 student
             $table->boolean('is_approved')->default(false);
+            $table->integer('level')->nullable();
+
+
             $table->rememberToken();
             $table->timestamps();
         });
+
     }
 
     /**

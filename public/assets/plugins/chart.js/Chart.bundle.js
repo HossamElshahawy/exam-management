@@ -1532,7 +1532,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -2134,7 +2134,7 @@ var helpers = {
 
 	/**
 	 * Returns true if `value` is neither null nor undefined, else returns false.
-	 * @param {*} value - The value to test.
+	 * @param {*} value - The value to exam.
 	 * @returns {boolean}
 	 * @since 2.7.0
 	 */
@@ -2144,7 +2144,7 @@ var helpers = {
 
 	/**
 	 * Returns true if `value` is an array (including typed arrays), else returns false.
-	 * @param {*} value - The value to test.
+	 * @param {*} value - The value to exam.
 	 * @returns {boolean}
 	 * @function
 	 */
@@ -2161,7 +2161,7 @@ var helpers = {
 
 	/**
 	 * Returns true if `value` is an object (excluding null), else returns false.
-	 * @param {*} value - The value to test.
+	 * @param {*} value - The value to exam.
 	 * @returns {boolean}
 	 * @since 2.7.0
 	 */
@@ -2171,7 +2171,7 @@ var helpers = {
 
 	/**
 	 * Returns true if `value` is a finite number, else returns false
-	 * @param {*} value  - The value to test.
+	 * @param {*} value  - The value to exam.
 	 * @returns {boolean}
 	 */
 	isFinite: function(value) {
@@ -2905,7 +2905,7 @@ var exports$1 = {
 
 	/**
 	 * Returns true if the point is inside the rectangle
-	 * @param {object} point - The point to test
+	 * @param {object} point - The point to exam
 	 * @param {object} area - The rectangle
 	 * @returns {boolean}
 	 * @private
@@ -6915,7 +6915,7 @@ var core_interaction = {
 		},
 
 		/**
-		 * Point mode returns all elements that hit test based on the event position
+		 * Point mode returns all elements that hit exam based on the event position
 		 * of the event
 		 * @function Chart.Interaction.modes.intersect
 		 * @param {Chart} chart - the chart we are returning items from
@@ -6943,7 +6943,7 @@ var core_interaction = {
 		},
 
 		/**
-		 * x mode returns the elements that hit-test at the current x coordinate
+		 * x mode returns the elements that hit-exam at the current x coordinate
 		 * @function Chart.Interaction.modes.x
 		 * @param {Chart} chart - the chart we are returning items from
 		 * @param {Event} e - the event we are find things at
@@ -6974,7 +6974,7 @@ var core_interaction = {
 		},
 
 		/**
-		 * y mode returns the elements that hit-test at the current y coordinate
+		 * y mode returns the elements that hit-exam at the current y coordinate
 		 * @function Chart.Interaction.modes.y
 		 * @param {Chart} chart - the chart we are returning items from
 		 * @param {Event} e - the event we are find things at
@@ -15721,7 +15721,7 @@ var moment = createCommonjsModule(function (module, exports) {
                 regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
                 this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
             }
-            // test the regex
+            // exam the regex
             if (strict && format === 'MMMM' && this._longMonthsParse[i].test(monthName)) {
                 return i;
             } else if (strict && format === 'MMM' && this._shortMonthsParse[i].test(monthName)) {
@@ -16205,7 +16205,7 @@ var moment = createCommonjsModule(function (module, exports) {
                 regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
                 this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
             }
-            // test the regex
+            // exam the regex
             if (strict && format === 'dddd' && this._fullWeekdaysParse[i].test(weekdayName)) {
                 return i;
             } else if (strict && format === 'ddd' && this._shortWeekdaysParse[i].test(weekdayName)) {

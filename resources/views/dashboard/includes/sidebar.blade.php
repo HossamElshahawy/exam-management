@@ -88,6 +88,7 @@
               </ul>
               @endcan
 
+              @can('access-professor')
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('chapter.index')}}" class="nav-link">
@@ -96,9 +97,37 @@
                   </a>
                 </li>
               </ul>
-          </li>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('exam.index')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Exams</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('QnA.index')}}" class="nav-link">
+                    <i class="far fa-question-circle nav-icon"></i>
+                    <p>Q&N</p>
+                  </a>
+                </li>
+              </ul>
+              @endcan
+              @can('access-student')
 
+                  <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="{{route('student.test')}}" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Tests</p>
+                          </a>
+                      </li>
+                  </ul>
+              @endcan
+          </li>
         </ul>
+
       </nav>
 
 

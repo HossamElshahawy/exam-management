@@ -37,7 +37,7 @@ CodeMirror.defineMode("clojure", function (options) {
       "assoc-in", "associative?", "atom", "await", "await-for", "await1",
       "bases", "bean", "bigdec", "bigint", "biginteger", "binding", "bit-and",
       "bit-and-not", "bit-clear", "bit-flip", "bit-not", "bit-or", "bit-set",
-      "bit-shift-left", "bit-shift-right", "bit-test", "bit-xor", "boolean",
+      "bit-shift-left", "bit-shift-right", "bit-exam", "bit-xor", "boolean",
       "boolean-array", "boolean?", "booleans", "bound-fn", "bound-fn*",
       "bound?", "bounded-count", "butlast", "byte", "byte-array", "bytes",
       "bytes?", "case", "cast", "cat", "char", "char-array",

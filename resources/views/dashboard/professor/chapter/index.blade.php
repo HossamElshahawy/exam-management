@@ -44,11 +44,11 @@
             </select> --}}
             <select name="subject_id" id="subject_id" class="form-control">
                 <option value="">Select Subject</option>
-                @if (auth()->user()->role == 0)
+                @if (auth()->user()->role == 1)
                     @foreach ($subjects as $subject)
                         <option value="{{$subject->id}}">{{$subject->name}}</option>
                     @endforeach
-                @elseif (auth()->user()->role == 1)
+                @elseif (auth()->user()->role == 2)
                     @foreach ($profsubjects as $profsubject)
                         <option value="{{$profsubject->id}}">{{$profsubject->name}}</option>
                     @endforeach
@@ -173,6 +173,7 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>description</th>
+                  <th>Number OF Questions</th>
                   <th>Subject</th>
 
                   <th>Controller</th>
@@ -188,6 +189,7 @@
                     <td>{{ $i }}</td>
                     <td>{{$chapter->name}}</td>
                     <td>{{$chapter->description}}</td>
+                    <td>{{$chapter->num_questions}}</td>
                     <td>{{$chapter->subject->name}}</td>
                     <td class="project-actions">
 
