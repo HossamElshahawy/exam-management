@@ -118,7 +118,7 @@
 
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
-                          <a href="{{route('student.test')}}" class="nav-link">
+                          <a href="{{route('test.index')}}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Tests</p>
                           </a>

@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('exam_attempts', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('status')->default(0);
-            $table->float('marks');
+            $table->float('marks')->nullable();
 
             $table->unsignedBigInteger('exam_id');
             $table->unsignedBigInteger('user_id');

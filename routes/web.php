@@ -63,6 +63,7 @@ Route::middleware(['auth','web','user_approved'])->group(function () {
 
         Route::get('/student/tests', [TestController::class,'index'])->name('test.index');
         Route::get('/exam/{id}', [TestController::class,'loadExamDashobard'])->name('student.test');
+        Route::POST('/exam/submit', [TestController::class,'examSubmit'])->name('student.examSubmit');
 
     });
 });

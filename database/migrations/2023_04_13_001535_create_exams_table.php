@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('date');
             $table->char('time');
             $table->integer('attempt');
-//            $table->integer('level');
+            $table->char('enterance_id');
 
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->cascadeOnDelete()->cascadeOnUpdate();
