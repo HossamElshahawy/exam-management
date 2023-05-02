@@ -37,14 +37,14 @@
                                 @foreach ($exams as $exam)
                                         <?php $i++; ?>
                                     <tr>
-
+                                        <td style="display: none;">{{$exam->id}}</td>
                                         <td>{{ $i }}</td>
                                         <td>{{$exam->name}}</td>
                                         <td>{{$exam->date}}</td>
                                         <td>{{$exam->time}}</td>
                                         <td>{{$exam->subject->name}}</td>
                                         <td>{{$exam->attempt}}</td>
-                                        <td></td>
+                                        <td>{{$exam->attempt_counter}}</td>
                                         <td><a href="#" data-code="{{$exam->enterance_id}}" class="copy"><i class="fa fa-copy"></i></a> </td>
 
 

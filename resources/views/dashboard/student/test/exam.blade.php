@@ -17,10 +17,11 @@
     @endphp
     <p style="color:black;">Welcome,{{Auth::User()->name}}</p>
     <h1 class="text-center">{{$exam[0]['name']}}</h1>
-    <h5 class="text-right time">{{$exam[0]['time']}}</h5>
     @php $qcount = 0;  @endphp
 @if($success == true)
         @if(count($qna)>0)
+            <h5 class="text-right time">{{$exam[0]['time']}}</h5>
+
             <form method="POST" action="{{route('student.examSubmit')}}" class="mb-5" id="exam_form" onsubmit="return isValid()">
                 @csrf
                 <input type="hidden" name="exam_id" value="{{$exam[0]['id']}}">

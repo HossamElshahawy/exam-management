@@ -25,7 +25,10 @@ class ExamController extends Controller
     {
         //
     }
-
+    public function show($id)
+    {
+        //
+    }
     /**
      * Store a newly created resource in storage.
      */

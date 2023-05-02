@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\Admin\ApprovalController;
 use App\Http\Controllers\Dashboard\professor\ExamController;
 use App\Http\Controllers\Dashboard\professor\QnAController;
 use App\Http\Controllers\Dashboard\Student\TestController;
+use App\Http\Controllers\Dashboard\Professor\MarkController;
 
 Route::middleware(['auth','web','user_approved'])->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -53,7 +54,9 @@ Route::middleware(['auth','web','user_approved'])->group(function () {
         Route::resource('/prof/QnA', QnAController::class);
         Route::POST('/prof/QnA/delete', [QnAController::class,'deleteQnA'])->name('Qna.delete');
 
-
+        //marks for each exam
+        Route::get('prof/exams/mark',[MarkController::class,'index'])->name('mark.index');
+        Route::PUT('prof/exams/mark',[MarkController::class,'update'])->name('mark.update');
 
     });
 
