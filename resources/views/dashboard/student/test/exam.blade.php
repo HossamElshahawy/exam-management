@@ -11,29 +11,26 @@
 
 <div class="container">
     @php
-
-        $time = explode(':',$exam[0]['time']);
-
+        $time = isset($exam[0]['time']) ? explode(':', $exam[0]['time']) : null;
     @endphp
-    <p style="color:black;">Welcome,{{Auth::User()->name}}</p>
-    <h1 class="text-center">{{$exam[0]['name']}}</h1>
-    @php $qcount = 0;  @endphp
-@if($success == true)
-        @if(count($qna)>0)
-            <h5 class="text-right time">{{$exam[0]['time']}}</h5>
-
-            <form method="POST" action="{{route('student.examSubmit')}}" class="mb-5" id="exam_form" onsubmit="return isValid()">
+    <p style="color:black;">Welcome, {{ Auth::user()->name }}</p>
+    <h1 class="text-center">{{ $exam[0]['name'] }}</h1>
+    @php $qcount = 0; @endphp
+    @if($success == true)
+        @if(count($qna) > 0)
+            <h5 class="text-right time">{{ $exam[0]['time'] }}</h5>
+            <form method="POST" action="{{ route('student.examSubmit') }}" class="mb-5" id="exam_form" onsubmit="return isValid()">
                 @csrf
-                <input type="hidden" name="exam_id" value="{{$exam[0]['id']}}">
+                <input type="hidden" name="exam_id" value="{{ $exam[0]['id'] }}">
                 @foreach($qna as $data)
                     <div>
-                        <h1 class="text-center">Q. {{$data['question'][0]['question']}}</h1>
-                        <input type="hidden" name="q[]" value="{{$data['question'][0]['id']}}">
-                        <input type="hidden" name="ans_{{$data['question'][0]['id']}}" id="ans_{{$data['question'][0]['id']}}">
-                        @php $acount = 1;  @endphp
+                        <h1 class="text-center">Q. {{ $data['question'][0]['question'] }}</h1>
+                        <input type="hidden" name="q[]" value="{{ $data['question'][0]['id'] }}">
+                        <input type="hidden" name="ans_{{ $data['question'][0]['id'] }}" id="ans_{{ $data['question'][0]['id'] }}">
+                        @php $acount = 1; @endphp
                         @foreach($data['question'][0]['answers'] as $answer)
-                            <p><b>{{$acount++}}).</b> {{$answer['answer']}}
-                                <input type="radio" name="radio_{{$data['question'][0]['id']}}" class="select_answer" data-id="{{$data['question'][0]['id']}}" value="{{$answer['id']}}">
+                            <p><b>{{ $acount++ }}).</b> {{ $answer['answer'] }}
+                                <input type="radio" name="radio_{{ $data['question'][0]['id'] }}" class="select_answer" data-id="{{ $answer['id'] }}">
                             </p>
                         @endforeach
                     </div>
@@ -44,13 +41,11 @@
                     <input type="submit" class="btn btn-info">
                 </div>
             </form>
-    @else
+        @else
             <h3 style="color:red;" class="text-center">Q & A Not Available</h3>
         @endif
-
-
     @else
-        <h3 style="color:red;" class="text-center">{{$msg}}</h3>
+        <h3 style="color:red;" class="text-center">{{ $msg }}</h3>
     @endif
 </div>
 
@@ -62,10 +57,10 @@
     var timerExpired = false; // Add flag to track timer expiration
 
     $(document).ready(function () {
-       $('.select_answer').click(function () {
-          var no = $(this).attr('data-id');
-          $('#ans_'+no).val($(this).val());
-       });
+        $('.select_answer').click(function () {
+            var no = $(this).attr('data-id');
+            $('#ans_'+no).val($(this).val());
+        });
 
         var time = @json($time);
 
@@ -74,13 +69,13 @@
         var hours = parseInt(time[0]);
         var minutes = parseInt(time[1]);
 
-       var timer = setInterval(()=>{
+        var timer = setInterval(()=>{
 
-           if (hours == 0 && minutes == 0 && seconds == 0 ) {
-            clearInterval(timer);
-            timerExpired = true;
-            $('#exam_form').submit();
-           }
+            if (hours == 0 && minutes == 0 && seconds == 0 ) {
+                clearInterval(timer);
+                timerExpired = true;
+                $('#exam_form').submit();
+            }
             console.log(hours+" -:- "+minutes+" -:- "+seconds)
             if(seconds<=0)
             {
@@ -136,6 +131,5 @@
 
 </body>
 </html>
-
 
 

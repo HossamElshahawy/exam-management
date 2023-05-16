@@ -15,23 +15,17 @@ class ExamController extends Controller
 {
     public function index()
     {
-        $exams = Exam::all();
-        $subjects = Subject::all();
+        $user = auth()->user();
         $profsubjects = auth()->user()->subject()->get();
+        if ($user->role == 1) {
+            $exams = Exam::all();
+            $subjects = Subject::all();
+        } else {
+            $subjects = $user->subject()->get();
+            $exams = Exam::whereIn('subject_id', $subjects->pluck('id'))->get();
+        }
         return view('dashboard.professor.exam.index', compact('exams', 'subjects', 'profsubjects'));
     }
-
-    public function create()
-    {
-        //
-    }
-    public function show($id)
-    {
-        //
-    }
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         try {

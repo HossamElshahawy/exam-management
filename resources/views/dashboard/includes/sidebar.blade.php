@@ -121,14 +121,29 @@
                           </a>
                       </li>
                   </ul>
+                  <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="{{route('studentsMark')}}" class="nav-link">
+                              <i class="fa fa-check mr-3"></i>
+                              <p>Students Mark</p>
+                          </a>
+                      </li>
+                  </ul>
               @endcan
               @can('access-student')
-
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
                           <a href="{{route('test.index')}}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Tests</p>
+                          </a>
+                      </li>
+                  </ul>
+                  <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="{{route('student.result')}}" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Results</p>
                           </a>
                       </li>
                   </ul>

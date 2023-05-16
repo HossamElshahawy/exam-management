@@ -41,4 +41,8 @@ class Exam extends Model
     {
         return $this->count;
     }
+    public function examAttepmt()
+    {
+        return $this->hasMany(ExamAttempt::class,'exam_id','id');
+    }
 }

@@ -11,9 +11,15 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        $chapters = Chapter::paginate(10);
+        $user = auth()->user();
         $subjects = Subject::all();
-        $profsubjects = auth()->user()->subject()->get();
+        $profsubjects = $user->subject()->get();
+        if ($user->role == 1) {
+            $chapters = Chapter::all();
+        } else {
+            $subjects = $user->subject()->get();
+            $chapters = Chapter::whereIn('subject_id', $subjects->pluck('id'))->paginate(10);
+        }
 
         return view('dashboard.professor.chapter.index',compact('chapters','subjects','profsubjects'));
     }

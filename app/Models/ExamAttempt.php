@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class ExamAttempt extends Model
 {
@@ -14,4 +15,14 @@ class ExamAttempt extends Model
         'exam_id',
         'marks'
     ];
+
+    public function exam()
+    {
+        return $this->belongsTo(Exam::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

@@ -3,11 +3,6 @@
 @section('work_space')
     <!-- Button Add trigger modal -->
     <br>
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addFaculityModal">
-        Add Mark
-    </button>
-
     <!-- Add Modal -->
     <div class="modal fade" id="editMarkModal">
         <div class="modal-dialog">

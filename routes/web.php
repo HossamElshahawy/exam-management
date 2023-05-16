@@ -14,7 +14,7 @@ use App\Http\Controllers\Dashboard\professor\ExamController;
 use App\Http\Controllers\Dashboard\professor\QnAController;
 use App\Http\Controllers\Dashboard\Student\TestController;
 use App\Http\Controllers\Dashboard\Professor\MarkController;
-
+use App\Http\Controllers\Dashboard\Student\ResultController;
 Route::middleware(['auth','web','user_approved'])->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -58,6 +58,9 @@ Route::middleware(['auth','web','user_approved'])->group(function () {
         Route::get('prof/exams/mark',[MarkController::class,'index'])->name('mark.index');
         Route::PUT('prof/exams/mark',[MarkController::class,'update'])->name('mark.update');
 
+        //marks students
+        Route::get('prof/exams/student/mark',[MarkController::class,'studentMark'])->name('studentsMark');
+
     });
 
     Route::group(['middleware'=>['student']],function(){
@@ -67,6 +70,9 @@ Route::middleware(['auth','web','user_approved'])->group(function () {
         Route::get('/student/tests', [TestController::class,'index'])->name('test.index');
         Route::get('/exam/{id}', [TestController::class,'loadExamDashobard'])->name('student.test');
         Route::POST('/exam/submit', [TestController::class,'examSubmit'])->name('student.examSubmit');
+        Route::get('/student/result', [ResultController::class,'index'])->name('student.result');
+        Route::get('/student/reviewQnA', [ResultController::class,'getReviewQnA'])->name('student.reviewQnN');
+
 
     });
 });
